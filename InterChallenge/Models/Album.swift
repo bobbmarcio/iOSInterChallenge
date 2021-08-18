@@ -8,4 +8,11 @@ struct Album: Codable {
     enum CodingKeys: String, CodingKey {
         case id, userId, title
     }
+    
+    class AlbumBuilder {
+        
+        func build(album: Album) -> Album {
+            return Album(id: album.id, userId: album.userId, title: album.title)
+        }
+    }
 }

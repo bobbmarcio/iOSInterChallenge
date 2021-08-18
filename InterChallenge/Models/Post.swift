@@ -9,4 +9,11 @@ struct Post: Codable {
     enum CodingKeys: String, CodingKey {
         case id, userId, title, body
     }
+    
+    class PostBuilder{
+    
+        func build(post: Post) -> Post {
+            return Post(id: post.id, userId: post.userId, title: post.title, body: post.body)
+        }
+    }
 }

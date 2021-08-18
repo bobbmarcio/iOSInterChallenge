@@ -9,4 +9,11 @@ struct Comment: Codable {
     enum CodingKeys: String, CodingKey {
         case id, postId, name, body
     }
+    
+    class CommentBuilder{
+        
+        func build(comment: Comment) -> Comment {
+            return Comment(id: comment.id, postId: comment.postId, name: comment.name, body: comment.body)
+        }
+    }
 }
