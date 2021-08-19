@@ -47,7 +47,7 @@ class PhotoTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let photo = photos[indexPath.row]
+        let photo = Photo.PhotoBuilder().build(photo: photos[indexPath.row])
         cell.titleLabel.text = photo.title
 
         AF.download(photo.thumbnailUrl).responseData { response in

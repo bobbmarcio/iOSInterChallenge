@@ -48,7 +48,7 @@ class PostTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let post = posts[indexPath.row]
+        let post = Post.PostBuilder().build(post: posts[indexPath.row])
         cell.titleLabel.text = post.title
         cell.descriptionLabel.text = post.body
 

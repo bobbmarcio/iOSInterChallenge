@@ -47,7 +47,7 @@ class AlbumTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        let album = albums[indexPath.row]
+        let album = Album.AlbumBuilder().build(album: albums[indexPath.row])
         cell.albumNameLabel.text = album.title
 
         return cell
