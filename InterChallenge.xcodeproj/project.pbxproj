@@ -34,8 +34,6 @@
 		BA93F7F82632035A00CE8AFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA93F7F62632035A00CE8AFF /* LaunchScreen.storyboard */; };
 		BA93F8032632035A00CE8AFF /* InterChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F8022632035A00CE8AFF /* InterChallengeTests.swift */; };
 		BA93F80E2632035A00CE8AFF /* InterChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F80D2632035A00CE8AFF /* InterChallengeUITests.swift */; };
-		F92306CE26CF5BB700BFDCB8 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306CD26CF5BB700BFDCB8 /* ChallengeVC.swift */; };
-		F92306D026CF5E1500BFDCB8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306CF26CF5E1500BFDCB8 /* UserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,8 +149,6 @@
 		BA93F8092632035A00CE8AFF /* InterChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA93F80D2632035A00CE8AFF /* InterChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterChallengeUITests.swift; sourceTree = "<group>"; };
 		BA93F80F2632035A00CE8AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F92306CD26CF5BB700BFDCB8 /* ChallengeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
-		F92306CF26CF5E1500BFDCB8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +229,6 @@
 				BA0CF8D126334FDB007BDFC8 /* PostTableViewController.swift */,
 				BA0CF8D526334FF0007BDFC8 /* CommentTableViewController.swift */,
 				BA0CF8EA26336B40007BDFC8 /* AlbumTableViewController.swift */,
-				F92306CD26CF5BB700BFDCB8 /* ChallengeVC.swift */,
 				BA0CF8F926336FEB007BDFC8 /* PhotoTableViewController.swift */,
 				BA0CF9012633764E007BDFC8 /* DetailsViewController.swift */,
 			);
@@ -244,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				BA0CF8B72632F566007BDFC8 /* UserTableViewCell.swift */,
-				F92306CF26CF5E1500BFDCB8 /* UserCell.swift */,
 				BA0CF8B82632F566007BDFC8 /* UserTableViewCell.xib */,
 			);
 			path = User;
@@ -523,13 +517,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92306CE26CF5BB700BFDCB8 /* ChallengeVC.swift in Sources */,
 				BA0CF8FE26337023007BDFC8 /* Photo.swift in Sources */,
 				BA0CF8F526336DB5007BDFC8 /* PhotoTableViewCell.swift in Sources */,
 				BA0CF8EF26336B59007BDFC8 /* Album.swift in Sources */,
 				BA0CF8C12632F7E3007BDFC8 /* User.swift in Sources */,
 				BA0CF8EB26336B40007BDFC8 /* AlbumTableViewController.swift in Sources */,
-				F92306D026CF5E1500BFDCB8 /* UserCell.swift in Sources */,
 				BA0CF8B92632F566007BDFC8 /* UserTableViewCell.swift in Sources */,
 				BA0CF8D626334FF0007BDFC8 /* CommentTableViewController.swift in Sources */,
 				BA0CF8E426336A9A007BDFC8 /* AlbumTableViewCell.swift in Sources */,
