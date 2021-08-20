@@ -48,7 +48,7 @@ class ChallengeVC: UIViewController {
     func configureTableView() {
         view.addSubview(tableView)
         setTableViewDelegates()
-        tableView.rowHeight = 200
+        tableView.rowHeight = 233
         tableView.register(UserCell.self, forCellReuseIdentifier: Cells.userCell)
         tableView.pin(to: view)
     }
@@ -65,18 +65,15 @@ extension ChallengeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.userCell, for: indexPath) as? UserTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.userCell, for: indexPath) as? UserCell else {
             return UITableViewCell()
         }
         let user = User.UserBuilder().build(user: users[indexPath.row])
+        cell.set(user: user)
         cell.selectionStyle = .none
-        cell.id = user.id
-        cell.initialsLabel.text = String(user.name.prefix(2))
-        cell.nameLabel.text = user.name
-        cell.userNameLabel.text = user.username
-        cell.emailLabel.text = user.email
-        cell.phoneLabel.text = user.phone
-        cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
+//        cell.id = user.id
+//        cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
+        
         return cell
     }
 }
