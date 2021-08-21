@@ -15,6 +15,7 @@ class UserCell: UITableViewCell {
     var emailLabel = UILabel()
     var phoneLabel = UILabel()
     var albunsButton = UIButton()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -111,4 +112,4 @@ class UserCell: UITableViewCell {
 //        nameLabel.heightAnchor.constraint(equalToConstant: 120).isActive = true
 //        nameLabel.widthAnchor.constraint(equalToConstant: 16).isActive = true
     }
-}
+    }

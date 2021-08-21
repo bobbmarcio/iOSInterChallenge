@@ -51,7 +51,7 @@ class ChallengeVC: UIViewController {
         setTableViewDelegates()
         tableView.rowHeight = 233
         tableView.register(UserCell.self, forCellReuseIdentifier: Cells.userCell)
-        tableView.pin(to: view)
+//        tableView.pin(to: view)
     }
     
     func setTableViewDelegates() {
