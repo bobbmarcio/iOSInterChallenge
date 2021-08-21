@@ -36,6 +36,10 @@
 		BA93F80E2632035A00CE8AFF /* InterChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA93F80D2632035A00CE8AFF /* InterChallengeUITests.swift */; };
 		F92306CE26CF5BB700BFDCB8 /* ChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306CD26CF5BB700BFDCB8 /* ChallengeVC.swift */; };
 		F92306D026CF5E1500BFDCB8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306CF26CF5E1500BFDCB8 /* UserCell.swift */; };
+		F92306EA26D07BFA00BFDCB8 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306E926D07BFA00BFDCB8 /* UIView+Ext.swift */; };
+		F92306EC26D07E3900BFDCB8 /* VideoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306EB26D07E3900BFDCB8 /* VideoListVC.swift */; };
+		F92306EE26D07E5200BFDCB8 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306ED26D07E5200BFDCB8 /* Video.swift */; };
+		F92306F026D07E7400BFDCB8 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92306EF26D07E7400BFDCB8 /* VideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +157,10 @@
 		BA93F80F2632035A00CE8AFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F92306CD26CF5BB700BFDCB8 /* ChallengeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeVC.swift; sourceTree = "<group>"; };
 		F92306CF26CF5E1500BFDCB8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		F92306E926D07BFA00BFDCB8 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		F92306EB26D07E3900BFDCB8 /* VideoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListVC.swift; sourceTree = "<group>"; };
+		F92306ED26D07E5200BFDCB8 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		F92306EF26D07E7400BFDCB8 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +242,9 @@
 				BA0CF8D526334FF0007BDFC8 /* CommentTableViewController.swift */,
 				BA0CF8EA26336B40007BDFC8 /* AlbumTableViewController.swift */,
 				F92306CD26CF5BB700BFDCB8 /* ChallengeVC.swift */,
+				F92306ED26D07E5200BFDCB8 /* Video.swift */,
+				F92306EF26D07E7400BFDCB8 /* VideoCell.swift */,
+				F92306EB26D07E3900BFDCB8 /* VideoListVC.swift */,
 				BA0CF8F926336FEB007BDFC8 /* PhotoTableViewController.swift */,
 				BA0CF9012633764E007BDFC8 /* DetailsViewController.swift */,
 			);
@@ -309,6 +320,7 @@
 				BA93F7F42632035A00CE8AFF /* Assets.xcassets */,
 				BA93F7F62632035A00CE8AFF /* LaunchScreen.storyboard */,
 				BA93F7F92632035A00CE8AFF /* Info.plist */,
+				F92306E926D07BFA00BFDCB8 /* UIView+Ext.swift */,
 			);
 			path = InterChallenge;
 			sourceTree = "<group>";
@@ -529,12 +541,16 @@
 				BA0CF8EF26336B59007BDFC8 /* Album.swift in Sources */,
 				BA0CF8C12632F7E3007BDFC8 /* User.swift in Sources */,
 				BA0CF8EB26336B40007BDFC8 /* AlbumTableViewController.swift in Sources */,
+				F92306EC26D07E3900BFDCB8 /* VideoListVC.swift in Sources */,
+				F92306EE26D07E5200BFDCB8 /* Video.swift in Sources */,
 				F92306D026CF5E1500BFDCB8 /* UserCell.swift in Sources */,
 				BA0CF8B92632F566007BDFC8 /* UserTableViewCell.swift in Sources */,
 				BA0CF8D626334FF0007BDFC8 /* CommentTableViewController.swift in Sources */,
 				BA0CF8E426336A9A007BDFC8 /* AlbumTableViewCell.swift in Sources */,
 				BA0CF8FA26336FEB007BDFC8 /* PhotoTableViewController.swift in Sources */,
+				F92306F026D07E7400BFDCB8 /* VideoCell.swift in Sources */,
 				BA0CF9022633764E007BDFC8 /* DetailsViewController.swift in Sources */,
+				F92306EA26D07BFA00BFDCB8 /* UIView+Ext.swift in Sources */,
 				BA93F7F02632035800CE8AFF /* ChallengeViewController.swift in Sources */,
 				BA93F7EC2632035800CE8AFF /* AppDelegate.swift in Sources */,
 				BA0CF8DE263358E5007BDFC8 /* Comment.swift in Sources */,

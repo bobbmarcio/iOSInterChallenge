@@ -18,6 +18,7 @@ class ChallengeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Desafio"
         fillUsers()
         configureTableView()
     }
@@ -75,5 +76,11 @@ extension ChallengeVC: UITableViewDelegate, UITableViewDataSource {
 //        cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
         
         return cell
+    }
+    
+    @objc func albunsClicked() {
+        print("Clicked")
+        let albunsVC = VideoListVC()
+        navigationController?.pushViewController(albunsVC, animated: true)
     }
 }
