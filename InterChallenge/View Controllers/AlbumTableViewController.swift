@@ -14,6 +14,16 @@ class AlbumTableViewController: UITableViewController {
         fillAlbums(from: userId)
     }
     
+    init(userId: Int, userName: String) {
+        self.userId = userId
+        self.userName = userName
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func fillAlbums(from userId: Int) {
         AF.request("https://jsonplaceholder.typicode.com/albums?userId=\(userId)").validate().responseJSON { response in
             guard response.error == nil else {
@@ -55,17 +65,8 @@ class AlbumTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let albumId = albums[indexPath.row].id
-        performSegue(withIdentifier: "albumToPhoto", sender: albumId)
+        let photoVC = PhotoTableViewController(userName: userName, albumId: albumId)
+        navigationController?.pushViewController(photoVC, animated: true)
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinatoinVC = segue.destination as? PhotoTableViewController {
-            if let albumId = sender as? Int {
-                destinatoinVC.userName = userName
-                destinatoinVC.albumId = albumId
-            }
-        }
-    }
 }

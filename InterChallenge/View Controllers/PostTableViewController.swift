@@ -15,6 +15,16 @@ class PostTableViewController: UITableViewController {
         fillPosts(from: userId)
     }
     
+    init(userId: Int, userName: String) {
+        self.userId = userId
+        self.userName = userName
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func fillPosts(from userId: Int) {
         AF.request("https://jsonplaceholder.typicode.com/posts?userId=\(userId)").validate().responseJSON { response in
             guard response.error == nil else {
@@ -57,17 +67,9 @@ class PostTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let postId = posts[indexPath.row].id
-        performSegue(withIdentifier: "postToComment", sender: postId)
+//        performSegue(withIdentifier: "postToComment", sender: postId)
+        let commentVC = CommentTableViewController(postId: postId, userName: userName)
+        navigationController?.pushViewController(commentVC, animated: true)
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinatoinVC = segue.destination as? CommentTableViewController {
-            if let postId = sender as? Int {
-                destinatoinVC.userName = userName
-                destinatoinVC.postId = postId
-            }
-        }
-    }
 }

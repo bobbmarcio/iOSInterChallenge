@@ -14,6 +14,16 @@ class PhotoTableViewController: UITableViewController {
         fillPhotos(from: albumId)
     }
     
+    init(userName: String, albumId: Int) {
+        self.userName = userName
+        self.albumId = albumId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func fillPhotos(from albumId: Int) {
         AF.request("https://jsonplaceholder.typicode.com/photos?albumId=\(albumId)").validate().responseJSON { response in
             guard response.error == nil else {
@@ -67,22 +77,14 @@ class PhotoTableViewController: UITableViewController {
         AF.download(photo.url).responseData { response in
             switch response.result {
             case .success(let data):
-                self.performSegue(withIdentifier: "photoToDetail",
-                                  sender: (photo: UIImage(data: data), name: photo.title))
+//                self.performSegue(withIdentifier: "photoToDetail",
+//                                  sender: (photo: UIImage(data: data), name: photo.title))
+                let detailVC = DetailsViewController(photo: (UIImage(data: data)!), name: photo.title)
+                self.navigationController?.pushViewController(detailVC, animated: true)
             default:
                 break
             }
         }
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinatinVC = segue.destination as? DetailsViewController {
-            if let info = sender as? (photo: UIImage, name: String) {
-                destinatinVC.photo = info.photo
-                destinatinVC.name = info.name
-            }
-        }
-    }
 }

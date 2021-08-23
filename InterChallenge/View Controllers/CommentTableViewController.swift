@@ -15,6 +15,16 @@ class CommentTableViewController: UITableViewController {
         fillComments(from: postId)
     }
     
+    init(postId: Int, userName: String) {
+        self.postId = postId
+        self.userName = userName
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func fillComments(from postId: Int) {
         AF.request("https://jsonplaceholder.typicode.com/comments?postId=\(postId)").validate().responseJSON { response in
             guard response.error == nil else {

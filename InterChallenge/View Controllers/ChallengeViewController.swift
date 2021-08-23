@@ -7,6 +7,7 @@ class ChallengeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Desafio"
         tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         fillUsers()
     }
@@ -76,12 +77,12 @@ class ChallengeViewController: UITableViewController {
 
 extension ChallengeViewController: UserTableViewCellDelegate {
     func didTapAlbums(with userId: Int, by name: String) {
-        let userIdAndName = (id: userId, name: name)
-        performSegue(withIdentifier: "challengeToAlbum", sender: userIdAndName)
+        let albumVC = AlbumTableViewController(userId: userId, userName: name)
+        navigationController?.pushViewController(albumVC, animated: true)
     }
     
     func didTapPosts(with userId: Int, by name: String) {
-        let userIdAndName = (id: userId, name: name)
-        performSegue(withIdentifier: "challengeToPost", sender: userIdAndName)
+        let postVC = PostTableViewController(userId: userId, userName: name)
+        navigationController?.pushViewController(postVC, animated: true)
     }
 }

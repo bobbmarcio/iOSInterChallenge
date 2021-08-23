@@ -1,5 +1,9 @@
 import UIKit
 
+protocol AlbumTableViewCellDelegate: AnyObject {
+    func didTapAlbum(with userName: String, by albumId: Int)
+}
+
 class AlbumTableViewCell: UITableViewCell {
 
     @IBOutlet weak var albumNameLabel: UILabel!
