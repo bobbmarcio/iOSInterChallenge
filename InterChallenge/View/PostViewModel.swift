@@ -12,8 +12,6 @@ struct PostViewModel {
     public var posts = [Post]()    
     
     public func fillPosts(from userId: Int) {
-        print("Entrou no fill")
-        print(userId)
         AF.request("https://jsonplaceholder.typicode.com/posts?userId=\(userId)").validate().responseJSON { response in
             guard response.error == nil else {
                 return
@@ -25,7 +23,6 @@ struct PostViewModel {
                     let models = try JSONDecoder().decode([Post].self, from: data)
                     event = PostFetchEvent(identifier: UUID().uuidString, result: .success(models))
                     Bus.shared.publishPost(type: .postFetch, event: event)
-                    print("Entrou no if")
                 }
             } catch {
                 print("Error during JSON serialization: \(error.localizedDescription)")

@@ -19,7 +19,7 @@ class AlbumTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with viewModel: AlbumViewModel) {
+    func configure(with viewModel: AlbumModel) {
         albumNameLabel.text = viewModel.title
     }
     

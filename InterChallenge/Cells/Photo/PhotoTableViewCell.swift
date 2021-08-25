@@ -13,7 +13,7 @@ class PhotoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(with viewModel: PhotoViewModel) {
+    func configure(with viewModel: PhotoModel) {
         titleLabel.text = viewModel.title
     }
     

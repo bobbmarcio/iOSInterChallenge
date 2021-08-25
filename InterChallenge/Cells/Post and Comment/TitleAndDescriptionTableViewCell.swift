@@ -9,7 +9,8 @@ class TitleAndDescriptionTableViewCell: UITableViewCell {
         descriptionLabel.text = viewModel.body
     }
     
-    func configureComment(with viewModel: CommentViewModel) {
+    func configureComment(with viewModel: CommentModel) {
+        selectionStyle = .none
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.body
     }

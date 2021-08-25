@@ -24,3 +24,15 @@ class UserFetchEvent: Event<[User]> {
 class PostFetchEvent: Event<[Post]> {
     
 }
+
+class CommentFetchEvent: Event<[Comment]> {
+    
+}
+
+class AlbumFetchEvent: Event<[Album]> {
+    
+}
+
+class PhotoFetchEvent: Event<[Photo]> {
+    
+}

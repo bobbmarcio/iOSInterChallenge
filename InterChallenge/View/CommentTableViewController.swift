@@ -5,14 +5,32 @@ class CommentTableViewController: UITableViewController {
     
     var postId = Int()
     var userName = String()
+    var cellIdentifier = "TitleAndDescriptionCell"
     var comments = [Comment]()
+    private var viewModel = CommentViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Comentários de \(userName)"
         tableView.register(UINib(nibName: "TitleAndDescriptionTableViewCell", bundle: nil),
-                           forCellReuseIdentifier: "TitleAndDescriptionCell")
-        fillComments(from: postId)
+                           forCellReuseIdentifier: cellIdentifier)
+        
+        Bus.shared.subscribeOnComment(.commentFetch) { [weak self] event in
+            guard let result = event.result else {
+                return
+            }
+            switch result {
+            case .success(let comments):
+                self?.viewModel.comments = comments
+                self?.tableView.reloadData()
+                break
+            case .failure(let error):
+                print(error)
+            }
+    }
+        
+        viewModel.fillComments(from: postId)
+        
     }
     
     init(postId: Int, userName: String) {
@@ -24,42 +42,18 @@ class CommentTableViewController: UITableViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func fillComments(from postId: Int) {
-        AF.request("https://jsonplaceholder.typicode.com/comments?postId=\(postId)").validate().responseJSON { response in
-            guard response.error == nil else {
-                let alert = UIAlertController(title: "Erro", message: "Algo errado aconteceu. Tente novamente mais tarde.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                    alert.dismiss(animated: true)
-                }))
-                self.present(alert, animated: true)
-                return
-            }
-            
-            do {
-                if let data = response.data {
-                    let models = try JSONDecoder().decode([Comment].self, from: data)
-                    self.comments = models
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Error during JSON serialization: \(error.localizedDescription)")
-            }
-        }
-   }
 
    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        return viewModel.comments.count
    }
     
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TitleAndDescriptionCell", for: indexPath) as? TitleAndDescriptionTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TitleAndDescriptionTableViewCell else {
             return UITableViewCell()
         }
-
-        let comment = Comment.CommentBuilder().build(comment: comments[indexPath.row])
-        cell.selectionStyle = .none
-        cell.configureComment(with: CommentViewModel(with: comment))
+    
+        let comment = Comment.CommentBuilder().build(comment: viewModel.comments[indexPath.row])
+        cell.configureComment(with: CommentModel(with: comment))
 
         return cell
     }
