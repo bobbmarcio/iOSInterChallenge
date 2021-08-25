@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-struct ViewModel {
+struct ChallengeViewModel {
     public var users: [User] = []
 
 public func fillUsers() {
@@ -22,7 +22,7 @@ public func fillUsers() {
             if let data = response.data {
                 let models = try JSONDecoder().decode([User].self, from: data)
                 event = UserFetchEvent(identifier: UUID().uuidString, result: .success(models))
-                Bus.shared.publish(type: .userFetch, event: event)
+                Bus.shared.publishUser(type: .userFetch, event: event)
             }
         } catch {
             print("Error during JSON serialization: \(error.localizedDescription)")
@@ -31,7 +31,7 @@ public func fillUsers() {
 }
 }
 
-class ChallengeViewModel {
+class ChallengeModel {
     let id: Int
     let name: String
     let username: String

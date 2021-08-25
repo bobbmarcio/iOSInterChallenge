@@ -241,8 +241,6 @@
 			children = (
 				BA93F7EF2632035800CE8AFF /* ChallengeViewController.swift */,
 				F9E0A54326D6D13200566DF7 /* ChallengeViewModel.swift */,
-				F9E0A53826D6C9FA00566DF7 /* Bus.swift */,
-				F9E0A54126D6CA7B00566DF7 /* Events.swift */,
 				BA0CF8D126334FDB007BDFC8 /* PostTableViewController.swift */,
 				F9E0A50426D5CF1700566DF7 /* PostViewModel.swift */,
 				BA0CF8D526334FF0007BDFC8 /* CommentTableViewController.swift */,
@@ -252,6 +250,8 @@
 				BA0CF8F926336FEB007BDFC8 /* PhotoTableViewController.swift */,
 				F9E0A51A26D68D1A00566DF7 /* PhotoViewModel.swift */,
 				BA0CF9012633764E007BDFC8 /* DetailsViewController.swift */,
+				F9E0A53826D6C9FA00566DF7 /* Bus.swift */,
+				F9E0A54126D6CA7B00566DF7 /* Events.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

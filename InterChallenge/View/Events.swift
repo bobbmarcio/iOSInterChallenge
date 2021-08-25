@@ -20,3 +20,7 @@ class Event<T> {
 class UserFetchEvent: Event<[User]> {
     
 }
+
+class PostFetchEvent: Event<[Post]> {
+    
+}

@@ -33,7 +33,7 @@ class UserTableViewCell: UITableViewCell {
         delegate?.didTapPosts(with: id, by: nameLabel.text ?? "")
     }
     
-    func configure(with viewModel: ChallengeViewModel) {
+    func configure(with viewModel: ChallengeModel) {
         id = viewModel.id
         initialsLabel.text = String(viewModel.name.prefix(2))
         nameLabel.text = viewModel.name

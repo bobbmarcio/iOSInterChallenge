@@ -14,30 +14,45 @@ class Bus {
     
     enum EventType {
         case userFetch
+        case postFetch
     }
     
-    struct Subscription {
+    struct SubscriptionUser {
         let type: EventType
         let queue: DispatchQueue
         let block: ((Event<[User]>) -> Void)
     }
     
-    private var subscriptions = [Subscription]()
-    
-    func subscribe(_ event: EventType, block: @escaping ((Event<[User]>) -> Void)) {
-        let new = Subscription(type: event, queue: .global(), block: block)
-        subscriptions.append(new)
+    struct SubscriptionPost {
+        let type: EventType
+        let queue: DispatchQueue
+        let block: ((Event<[Post]>) -> Void)
     }
     
-    func subscribeOnMain(_ event: EventType, block: @escaping ((Event<[User]>) -> Void)) {
-        let new = Subscription(type: event, queue: .main, block: block)
-        subscriptions.append(new)
+    private var subscriptionsUser = [SubscriptionUser]()
+    private var subscriptionsPost = [SubscriptionPost]()
+    
+    func subscribeOnUser(_ event: EventType, block: @escaping ((Event<[User]>) -> Void)) {
+        let new = SubscriptionUser(type: event, queue: .main, block: block)
+        subscriptionsUser.append(new)
     }
     
+    func subscribeOnPost(_ event: EventType, block: @escaping ((Event<[Post]>) -> Void)) {
+        let new = SubscriptionPost(type: event, queue: .main, block: block)
+        subscriptionsPost.append(new)
+    }
     
+    func publishUser(type: EventType, event: UserFetchEvent) {
+        let subscribers = subscriptionsUser.filter({ $0.type == type })
+        subscribers.forEach { subscriber in
+            subscriber.queue.async {
+                subscriber.block(event)
+            }
+        }
+    }
     
-    func publish(type: EventType, event: UserFetchEvent) {
-        let subscribers = subscriptions.filter({ $0.type == type })
+    func publishPost(type: EventType, event: PostFetchEvent) {
+        let subscribers = subscriptionsPost.filter({ $0.type == type })
         subscribers.forEach { subscriber in
             subscriber.queue.async {
                 subscriber.block(event)

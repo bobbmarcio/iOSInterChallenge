@@ -5,14 +5,14 @@ class ChallengeViewController: UITableViewController {
     
     var users = [User]()
     var cellIdentifier = "UserCell"
-    private var viewModel = ViewModel()
+    private var viewModel = ChallengeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Desafio"
         tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
-        Bus.shared.subscribeOnMain(.userFetch) { [weak self] event in
+        Bus.shared.subscribeOnUser(.userFetch) { [weak self] event in
             guard let result = event.result else {
                 return
             }
@@ -38,7 +38,7 @@ class ChallengeViewController: UITableViewController {
             return UITableViewCell()
         }
         let user = User.UserBuilder().build(user: viewModel.users[indexPath.row])
-        cell.configure(with: ChallengeViewModel(with: user))
+        cell.configure(with: ChallengeModel(with: user))
         cell.delegate = self
         cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
         return cell
