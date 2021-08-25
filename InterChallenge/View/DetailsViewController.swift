@@ -58,7 +58,6 @@ class DetailsViewController: UIViewController {
         
         constraints.append(name.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15))
         constraints.append(name.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15))
-//        constraints.append(name.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 310))
         constraints.append(name.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: 10))
         
         NSLayoutConstraint.activate(constraints)
