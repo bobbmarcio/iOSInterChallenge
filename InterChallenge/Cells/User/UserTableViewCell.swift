@@ -32,4 +32,15 @@ class UserTableViewCell: UITableViewCell {
     @IBAction func postsAction(_ sender: UIButton) {
         delegate?.didTapPosts(with: id, by: nameLabel.text ?? "")
     }
+    
+    func configure(with viewModel: ChallengeViewModel) {
+        id = viewModel.id
+        initialsLabel.text = String(viewModel.name.prefix(2))
+        nameLabel.text = viewModel.name
+        userNameLabel.text = viewModel.username
+        emailLabel.text = viewModel.email
+        phoneLabel.text = viewModel.phone
+        
+        selectionStyle = .none        
+    }
 }

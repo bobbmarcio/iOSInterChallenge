@@ -59,8 +59,7 @@ class CommentTableViewController: UITableViewController {
 
         let comment = Comment.CommentBuilder().build(comment: comments[indexPath.row])
         cell.selectionStyle = .none
-        cell.titleLabel.text = comment.name
-        cell.descriptionLabel.text = comment.body
+        cell.configureComment(with: CommentViewModel(with: comment))
 
         return cell
     }

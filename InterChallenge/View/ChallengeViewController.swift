@@ -4,11 +4,12 @@ import UIKit
 class ChallengeViewController: UITableViewController {
     
     var users = [User]()
+    var cellIdentifier = "UserCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Desafio"
-        tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         fillUsers()
     }
     
@@ -22,7 +23,7 @@ class ChallengeViewController: UITableViewController {
                 self.present(alert, animated: true)
                 return
             }
-            
+
             do {
                 if let data = response.data {
                     let models = try JSONDecoder().decode([User].self, from: data)
@@ -40,38 +41,14 @@ class ChallengeViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserTableViewCell else {
             return UITableViewCell()
         }
         let user = User.UserBuilder().build(user: users[indexPath.row])
-        cell.selectionStyle = .none
-        cell.id = user.id
-        cell.initialsLabel.text = String(user.name.prefix(2))
-        cell.nameLabel.text = user.name
-        cell.userNameLabel.text = user.username
-        cell.emailLabel.text = user.email
-        cell.phoneLabel.text = user.phone
+        cell.configure(with: ChallengeViewModel(with: user))
         cell.delegate = self
         cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? .white : UIColor(white: 0.667, alpha: 0.2)
         return cell
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? AlbumTableViewController {
-            if let info = sender as? (id: Int, name: String) {
-                destinationVC.userId = info.id
-                destinationVC.userName = info.name
-            }
-        }
-        
-        if let destinationVC = segue.destination as? PostTableViewController {
-            if let info = sender as? (id: Int, name: String) {
-                destinationVC.userId = info.id
-                destinationVC.userName = info.name
-            }
-        }
     }
 }
 

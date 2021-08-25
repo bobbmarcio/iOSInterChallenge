@@ -77,8 +77,6 @@ class PhotoTableViewController: UITableViewController {
         AF.download(photo.url).responseData { response in
             switch response.result {
             case .success(let data):
-//                self.performSegue(withIdentifier: "photoToDetail",
-//                                  sender: (photo: UIImage(data: data), name: photo.title))
                 let detailVC = DetailsViewController(photo: (UIImage(data: data)!), name: photo.title)
                 self.navigationController?.pushViewController(detailVC, animated: true)
             default:
