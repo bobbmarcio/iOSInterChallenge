@@ -1,12 +1,35 @@
 //
-//  ChallengeViewModel.swift
+//  ViewModel.swift
 //  InterChallenge
 //
-//  Created by Márcio Flores on 24/08/21.
+//  Created by Márcio Flores on 25/08/21.
 //
 
 import UIKit
 import Alamofire
+
+struct ViewModel {
+    public var users: [User] = []
+
+public func fillUsers() {
+    AF.request("https://jsonplaceholder.typicode.com/users").validate().responseJSON { response in
+        guard response.error == nil else {
+            return
+        }
+
+        let event: UserFetchEvent
+        do {
+            if let data = response.data {
+                let models = try JSONDecoder().decode([User].self, from: data)
+                event = UserFetchEvent(identifier: UUID().uuidString, result: .success(models))
+                Bus.shared.publish(type: .userFetch, event: event)
+            }
+        } catch {
+            print("Error during JSON serialization: \(error.localizedDescription)")
+        }
+    }
+}
+}
 
 class ChallengeViewModel {
     let id: Int
@@ -23,3 +46,4 @@ class ChallengeViewModel {
         phone = model.phone
     }
 }
+
