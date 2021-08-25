@@ -38,6 +38,7 @@
 		F9E0A50526D5CF1700566DF7 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E0A50426D5CF1700566DF7 /* PostViewModel.swift */; };
 		F9E0A50726D683AD00566DF7 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E0A50626D683AD00566DF7 /* CommentViewModel.swift */; };
 		F9E0A50926D685C500566DF7 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E0A50826D685C500566DF7 /* AlbumViewModel.swift */; };
+		F9E0A51B26D68D1A00566DF7 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E0A51A26D68D1A00566DF7 /* PhotoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 		F9E0A50426D5CF1700566DF7 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		F9E0A50626D683AD00566DF7 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		F9E0A50826D685C500566DF7 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		F9E0A51A26D68D1A00566DF7 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				BA0CF8EA26336B40007BDFC8 /* AlbumTableViewController.swift */,
 				F9E0A50826D685C500566DF7 /* AlbumViewModel.swift */,
 				BA0CF8F926336FEB007BDFC8 /* PhotoTableViewController.swift */,
+				F9E0A51A26D68D1A00566DF7 /* PhotoViewModel.swift */,
 				BA0CF9012633764E007BDFC8 /* DetailsViewController.swift */,
 			);
 			path = View;
@@ -530,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA0CF8FE26337023007BDFC8 /* Photo.swift in Sources */,
+				F9E0A51B26D68D1A00566DF7 /* PhotoViewModel.swift in Sources */,
 				BA0CF8F526336DB5007BDFC8 /* PhotoTableViewCell.swift in Sources */,
 				BA0CF8EF26336B59007BDFC8 /* Album.swift in Sources */,
 				F9E0A50926D685C500566DF7 /* AlbumViewModel.swift in Sources */,
