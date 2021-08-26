@@ -54,8 +54,6 @@ class PhotoTableViewController: UITableViewController {
         let photo = Photo.PhotoBuilder().build(photo: viewModel.photos[indexPath.row])
         cell.configure(with: PhotoModel(with: photo))
                 
-//        cell.photoImageView.image = UIImage(data: viewModel.downloadThumbnail(from: photo.thumbnailUrl))
-
         AF.download(photo.thumbnailUrl).responseData { response in
             switch response.result {
             case .success(let data):
