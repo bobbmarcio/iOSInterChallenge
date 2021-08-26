@@ -29,6 +29,19 @@ struct PhotoViewModel {
             }
         }
     }
+    
+    public func downloadThumbnail(from thumbnailUrl: String) -> Data {
+        let data = Data()
+        AF.download(thumbnailUrl).responseData { response in
+            switch response.result {
+            case .success(data):
+                return
+            default:
+                break
+            }
+        }
+        return data
+    }
 }
 
 class PhotoModel {

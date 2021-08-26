@@ -53,6 +53,8 @@ class PhotoTableViewController: UITableViewController {
         
         let photo = Photo.PhotoBuilder().build(photo: viewModel.photos[indexPath.row])
         cell.configure(with: PhotoModel(with: photo))
+                
+//        cell.photoImageView.image = UIImage(data: viewModel.downloadThumbnail(from: photo.thumbnailUrl))
 
         AF.download(photo.thumbnailUrl).responseData { response in
             switch response.result {
@@ -67,7 +69,7 @@ class PhotoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let photo = photos[indexPath.row]
+        let photo = viewModel.photos[indexPath.row]
         AF.download(photo.url).responseData { response in
             switch response.result {
             case .success(let data):
